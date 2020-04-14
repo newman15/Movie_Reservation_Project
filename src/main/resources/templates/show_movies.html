@@ -1,21 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html xmls:th="www.whymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Showtimes</title>
 <style>
-	#title{
-		background-color: lightblue;
-		color: black;
-		padding: 40px;
-		text-align: center;
-	}
+#title {
+	background-color: lightblue;
+	color: black;
+	padding: 40px;
+	text-align: center;
+}
+
+ul#movies_list li {
+	display: inline-block;
+	padding: 12px;
+}
 </style>
 </head>
 <body>
 	<div id="title">
 		<h1>JAZZ Cinemas</h1>
 	</div>
-	
+
+	<ul id="movies_list">
+		<li>
+		<div id="movie1">
+			<img src = "[[${movie1.imageUrl}]]">
+			<p th:inline="text"> [[${movie1.movieName}]]</p> <br /> 
+			<p th:inline="text"> [[${movie1.releaseDate}]]</p><br /> 
+			BUTTON<br />
+		</div>
+		</li>
+
+		<li>
+		<div id="movie2">
+			<img src = "[[${movie2.imageUrl}]]">
+			<p th:inline="text">[[${movie2.movieName}]]</p><br /> 
+			<p th:inline="text">[[${movie2.releaseDate}]]</p><br /> 
+			BUTTON<br />
+		</div>
+		</li>
+
+		<li>
+		<div id="movie3">
+			<img src = "[[${movie3.imageUrl}]]">
+			<p th:inline="text">[[${movie3.movieName}]]</p><br /> 
+			<p th:inline="text">[[${movie3.releaseDate}]]</p><br /> 
+			BUTTON<br />
+		</div>
+		</li>
+	</ul>
+
 </body>
 </html>
