@@ -2,9 +2,60 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Create Reservation</title>
+<style>
+img {
+	width: 300px;
+}
+
+#movieInfo {
+	padding-right: 20px;
+}
+
+.flex-container {
+	display: flex;
+	flex-wrap: nowrap;
+}
+</style>
 </head>
 <body>
+
+	<div id="movieChoice" class="flex-container">
+		<div id="movieInfo">
+			<img th:src="@{${movieChoice.imageUrl}}" />
+			<p th:inline="text">[[${movieChoice.movieName}]]</p>
+			<br />
+			<p th:inline="text">[[${movieChoice.releaseDate}]]</p>
+			<br />
+		</div>
+		
+		<div id="reserveIdCopy">
+			<p th:inline="text">movie id = [[${movieChoice.movieId}]]</p>
+		</div>
+		
+		<div id="numOfTickets">
+			<h2><p th:inline="text">Choose Your Number of Tickets for [[${movieChoice.movieName}]]:</p></h2>
+				<form action="#" th:action="@{/movies/success}" method="get">
+					
+					<input type="radio" value="1" name="ticketsRequested">
+					<label for="1">1 Ticket</label><br />
+					<input type="radio" value="2" name="ticketsRequested">
+					<label for="2">2 Tickets</label><br />
+					<input type="radio" value="3" name="ticketsRequested">
+					<label for="3">3 Tickets</label><br />
+					<input type="radio" value="4" name="ticketsRequested">
+					<label for="4">4 Tickets</label><br />
+					<br />
+					<button type="submit" name="reserveId" value="0">Submit</button>
+				</form>
+		</div>
+	</div>
+
+
+	<div id="showTimes"></div>
+
+
+
 
 </body>
 </html>

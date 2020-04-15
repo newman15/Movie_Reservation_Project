@@ -2,9 +2,13 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Your Reservation</title>
 </head>
 <body>
+	<h1>Your reservation has been saved</h1>
 
+	<div id="ticketSuccess">
+			<p th:inline="text">movie id = [[${ticketSuccess.movieName}]]</p>
+	</div>
 </body>
 </html>

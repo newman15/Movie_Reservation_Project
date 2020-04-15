@@ -4,17 +4,39 @@
 <meta charset="ISO-8859-1">
 <title>Showtimes</title>
 <style>
-#title {
-	background-color: lightblue;
-	color: black;
-	padding: 40px;
-	text-align: center;
-}
-
-ul#movies_list li {
-	display: inline-block;
-	padding: 12px;
-}
+	#title {
+		background-color: lightblue;
+		color: black;
+		padding: 40px;
+		text-align: center;
+		border-style: solid;
+	}
+	
+	#movies_list li {
+		display: inline-block;
+		padding: 12px;
+		justify-content: center;
+	}
+	
+	ul{
+		text-align: center;
+		padding: 10px;
+	}
+	
+	img{
+		width: 200px;
+		height: 300px;
+		padding: 30px;
+	}
+	
+	body{
+		background-color: #E6E6DC;
+	}
+	
+	p, button{
+		font-size: 20px;
+	}
+	
 </style>
 </head>
 <body>
@@ -24,30 +46,48 @@ ul#movies_list li {
 
 	<ul id="movies_list">
 		<li>
-		<div id="movie1">
-			<img src = "[[${movie1.imageUrl}]]">
-			<p th:inline="text"> [[${movie1.movieName}]]</p> <br /> 
-			<p th:inline="text"> [[${movie1.releaseDate}]]</p><br /> 
-			BUTTON<br />
-		</div>
+			<div id="movie1">
+				<img th:src="@{${movie1.imageUrl}}" />
+				<p th:inline="text">[[${movie1.movieName}]]</p>
+				<br />
+				<p th:inline="text">[[${movie1.releaseDate}]]</p>
+				<br />
+
+				<form action="#" th:action="@{/movies/reservation}" method="get">
+					<button type="submit" value="0" name="reserveId">Reserve</button>
+					<br />
+				</form>
+			</div>
 		</li>
 
 		<li>
-		<div id="movie2">
-			<img src = "[[${movie2.imageUrl}]]">
-			<p th:inline="text">[[${movie2.movieName}]]</p><br /> 
-			<p th:inline="text">[[${movie2.releaseDate}]]</p><br /> 
-			BUTTON<br />
-		</div>
+			<div id="movie2">
+				<img th:src="@{${movie2.imageUrl}}" />
+				<p th:inline="text">[[${movie2.movieName}]]</p>
+				<br />
+				<p th:inline="text">[[${movie2.releaseDate}]]</p>
+				<br />
+
+				<form action="#" th:action="@{/movies/reservation}" method="get">
+					<button type="submit" value="1" name="reserveId">Reserve</button>
+					<br />
+				</form>
+			</div>
 		</li>
 
 		<li>
-		<div id="movie3">
-			<img src = "[[${movie3.imageUrl}]]">
-			<p th:inline="text">[[${movie3.movieName}]]</p><br /> 
-			<p th:inline="text">[[${movie3.releaseDate}]]</p><br /> 
-			BUTTON<br />
-		</div>
+			<div id="movie3">
+				<img th:src="@{${movie3.imageUrl}}" />
+				<p th:inline="text">[[${movie3.movieName}]]</p>
+				<br />
+				<p th:inline="text">[[${movie3.releaseDate}]]</p>
+				<br />
+
+				<form action="#" th:action="@{/movies/reservation}" method="get">
+					<button type="submit" value="2" name="reserveId">Reserve</button>
+					<br />
+				</form>
+			</div>
 		</li>
 	</ul>
 

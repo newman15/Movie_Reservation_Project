@@ -12,28 +12,26 @@ import final_project.domain.Movie;
 @Service
 public class MovieService {
 
-  private RestTemplate restTemplate;
-  private String moviesUrl;
-  private String imageUrlStart;
- 
-  public MovieService(
-        @Value("${movie.url}") final String moviesUrl,
-        @Value("${image.url}") final String imageUrlStart) {
-     this.imageUrlStart = imageUrlStart;
-     this.restTemplate = new RestTemplate();
-     this.moviesUrl = moviesUrl;
-  }
- 
-  public Movie getMovieObjectInfo(int movieIndex) {
-     
-     ResponseEntity<JsonNode> response = restTemplate.getForEntity(moviesUrl, JsonNode.class);
-     JsonNode json = response.getBody();
-     
-     String movieTitle = json.get(movieIndex).get("original_title").asText();
-     int id = json.get(movieIndex).get("id").asInt();
-     String releaseDate = json.get(movieIndex).get("release_date").asText();
-     String imageUrl = imageUrlStart + json.get(movieIndex).get("poster_path").asText();
-     return new Movie(movieTitle, id, releaseDate, imageUrl);
-  }
- 
+   private RestTemplate restTemplate;
+   private String moviesUrl;
+   private final String imageUrlStart = "http://image.tmdb.org/t/p/original";
+   
+   public MovieService(
+         @Value("${movie.url}") final String moviesUrl) {
+      this.restTemplate = new RestTemplate();
+      this.moviesUrl = moviesUrl;
+   }
+   
+   public Movie getMovieObjectInfo(int movieIndex) {
+      ResponseEntity<JsonNode> response = restTemplate.getForEntity(moviesUrl, JsonNode.class);
+      JsonNode json = response.getBody().get("results").get(movieIndex);
+      
+      String movieTitle = json.get("original_title").asText();
+      int id = json.get("id").asInt();
+      String releaseDate = json.get("release_date").asText();
+      String imageUrl = imageUrlStart + json.get("poster_path").asText();
+
+      return new Movie(movieTitle, id, releaseDate, imageUrl);
+   }
+   
 }
