@@ -4,22 +4,42 @@
 <meta charset="ISO-8859-1">
 <title>Create Reservation</title>
 <style>
-img {
-	width: 300px;
-}
-
-#movieInfo {
-	padding-right: 20px;
-}
-
-.flex-container {
-	display: flex;
-	flex-wrap: nowrap;
-}
+	#title {
+		background-color: lightblue;
+		color: black;
+		padding: 40px;
+		text-align: center;
+		border-style: solid;
+	}
+	
+	body{
+		background-color: #E6E6DC;
+	}
+	
+	#movieInfo{
+		padding-left: 30%;
+	}
+	
+	img {
+		width: 300px;
+	}
+	
+	#movieInfo {
+		padding-right: 20px;
+	}
+	
+	.flex-container {
+		display: flex;
+		flex-wrap: nowrap;
+		padding: 30px;
+	}
 </style>
 </head>
 <body>
-
+	<div id="title">
+		<h1>JAZZ Cinemas</h1>
+	</div>
+	
 	<div id="movieChoice" class="flex-container">
 		<div id="movieInfo">
 			<img th:src="@{${movieChoice.imageUrl}}" />
@@ -29,14 +49,10 @@ img {
 			<br />
 		</div>
 		
-		<div id="reserveIdCopy">
-			<p th:inline="text">movie id = [[${movieChoice.movieId}]]</p>
-		</div>
-		
 		<div id="numOfTickets">
 			<h2><p th:inline="text">Choose Your Number of Tickets for [[${movieChoice.movieName}]]:</p></h2>
-				<form action="#" th:action="@{/movies/success}" method="get">
-					
+				<form action="#" th:action="@{/movies/success}" th:object="${movieReservation}" method="get">
+					<input type="hidden" name="movieNumber"  th:value="${movieNumber}"   />
 					<input type="radio" value="1" name="ticketsRequested">
 					<label for="1">1 Ticket</label><br />
 					<input type="radio" value="2" name="ticketsRequested">
@@ -46,7 +62,7 @@ img {
 					<input type="radio" value="4" name="ticketsRequested">
 					<label for="4">4 Tickets</label><br />
 					<br />
-					<button type="submit" name="reserveId" value="0">Submit</button>
+					<button type="submit" name="reserveId">Submit</button>
 				</form>
 		</div>
 	</div>

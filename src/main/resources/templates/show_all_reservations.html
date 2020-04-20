@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmls:th="www.whymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Movie Ratings List</title>
+</head>
+<style>
+	#title {
+		background-color: lightblue;
+		color: black;
+		padding: 40px;
+		text-align: center;
+		border-style: solid;
+	}
+	
+	body{
+		background-color: #E6E6DC;
+	}
+	
+	p {
+		text-align: center;
+	}
+	
+	table{
+		width: 100%;
+		text-align: center;
+	}
+	
+</style>
+<body>
+	<div id="title">
+		<h1>JAZZ Cinemas</h1>
+	</div>
+	
+	<p><a href="/movies"><strong>Go Back To Movie List</strong></a></p>
+	<br/><br/>
+	
+	<table>
+		<tr>
+			<th>Movie Title</th>
+			<th>Number of Tickets</th>
+		</tr>
+		<tr th:each="movieReservation : ${reservations}">
+			<td th:text="${movieReservation.movieName}"></td>
+			<td th:text="${movieReservation.numberOfTickets}"></td>
+		</tr>
+	</table>
+</body>
+</html>

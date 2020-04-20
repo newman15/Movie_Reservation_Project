@@ -3,12 +3,45 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Your Reservation</title>
+<style>
+	#title {
+		background-color: lightblue;
+		color: black;
+		padding: 40px;
+		text-align: center;
+		border-style: solid;
+	}
+	
+	body{
+		background-color: #E6E6DC;
+	}
+	
+	h1, #ticketSuccess, form{
+		text-align: center;
+	}
+
+	img {
+		width: 300px;
+		justify-content: center;
+	}
+</style>
 </head>
 <body>
+	<div id="title">
+		<h1>JAZZ Cinemas</h1>
+	</div>
+	
 	<h1>Your reservation has been saved</h1>
 
 	<div id="ticketSuccess">
-			<p th:inline="text">movie id = [[${ticketSuccess.movieName}]]</p>
+		<img th:src="@{${ticketSuccess.imageUrl}}" />
+		<p th:inline="text">Your Reservation for [[${ticketSuccess.movieName}]] is completed</p>
+		<p th:inline="text">Your Number of tickets = [[${ticketsRequested}]]</p>
 	</div>
+	
+	<form action="#" th:action="@{/movies/show-reservations}" method="get">
+		<button type="submit" name="showAllRes">Show All Reservations</button>
+	</form>
+				
 </body>
 </html>

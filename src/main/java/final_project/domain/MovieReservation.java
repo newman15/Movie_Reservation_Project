@@ -1,13 +1,27 @@
 package final_project.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity // This tells Hibernate to make a table out of this class
 public class MovieReservation {
 
-    String movieName;
-    int numberOfTickets, seatNumber;
+	@Id
+	@GeneratedValue
+	private long id;
+	
+    private String movieName;
+    private int numberOfTickets;
     
-    public MovieReservation(Movie movie, int numberOfTickets)
+    public MovieReservation() {
+    	movieName = null;
+    	numberOfTickets = 0;
+    }
+    
+    public MovieReservation(Movie movieName, int numberOfTickets)
     {
-        this.movieName = movie.getMovieName();
+        this.movieName = movieName.getMovieName();
         this.numberOfTickets = numberOfTickets;
     }
 
@@ -27,13 +41,5 @@ public class MovieReservation {
         this.numberOfTickets = numberOfTickets;
     }
 
-    public int getSeatNumber() {
-        return seatNumber;
-    }
-
-    public void setSeatNumber(int seatNumber) {
-        this.seatNumber = seatNumber;
-    }
-    
     
 }
