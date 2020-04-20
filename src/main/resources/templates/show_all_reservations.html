@@ -15,6 +15,7 @@
 	
 	body{
 		background-color: #E6E6DC;
+		/* background-color: lightblue; */
 	}
 	
 	p {
@@ -24,26 +25,60 @@
 	table{
 		width: 100%;
 		text-align: center;
+		padding-left: 25%;
+		padding-right: 25%;
 	}
 	
+	td, th{
+		border: 1px solid black;
+		padding: 8px;
+	}
+	
+	tr:nth-child(even){
+		background-color: #dddddd;
+	}
+
 </style>
 <body>
 	<div id="title">
 		<h1>JAZZ Cinemas</h1>
+		<!-- <img src="https://github.com/newman15/cst438_project_FrontEnd/blob/master/Team%20Logo.jpg?raw=true" alt="Team Logo.jpg"> -->
 	</div>
 	
 	<p><a href="/movies"><strong>Go Back To Movie List</strong></a></p>
 	<br/><br/>
 	
 	<table>
+		<caption>All Reservations</caption>
+		<tr>
+			<th>Reservation Number</th>
+			<th>Movie Title</th>
+			<th>Number of Tickets</th>
+			<th>Showtime</th>
+		</tr>
+		<tr th:each="movieReservation : ${reservations}">
+			<td th:text="${movieReservation.id}"></td>
+			<td th:text="${movieReservation.movieName}"></td>
+			<td th:text="${movieReservation.numberOfTickets}"></td>
+			<td th:text="${movieReservation.showTime}"></td>
+		</tr>
+	</table><br/><br/><br/>
+	
+	<table>
+		<caption>Total Tickets Reserved By Movie Title</caption>
 		<tr>
 			<th>Movie Title</th>
 			<th>Number of Tickets</th>
+			<!-- <th>Showtime</th> -->
 		</tr>
-		<tr th:each="movieReservation : ${reservations}">
+		<tr th:each="movieReservation : ${reservationsByShowtime}">
 			<td th:text="${movieReservation.movieName}"></td>
 			<td th:text="${movieReservation.numberOfTickets}"></td>
+			<!-- <td th:text="${movieReservation.showTime}"></td> -->
 		</tr>
 	</table>
+	
+<br/><br/><br/><br/><br/><br/>
+
 </body>
 </html>

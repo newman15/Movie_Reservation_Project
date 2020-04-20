@@ -37,6 +37,7 @@
 		<img th:src="@{${ticketSuccess.imageUrl}}" />
 		<p th:inline="text">Your Reservation for [[${ticketSuccess.movieName}]] is completed</p>
 		<p th:inline="text">Your Number of tickets = [[${ticketsRequested}]]</p>
+		<p th:inline="text">Your showtime is reserved for [[${movieTimes}]]</p>
 	</div>
 	
 	<form action="#" th:action="@{/movies/show-reservations}" method="get">

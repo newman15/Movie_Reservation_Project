@@ -16,14 +16,16 @@ public class ReservationService {
 	  MovieReservation movieReservation;
 	  Movie movie;
 	  int numberOfTickets;
+	  String showTime = null;
 	 
 	  //get the movie object
 	  movie = movieService.getMovieObjectInfo(movieIndex);
+	  
 	  //reserve amount of tickets
 	  numberOfTickets = 1;
 	 
 	  //set
-	  movieReservation = new MovieReservation(movie, numberOfTickets);
+	  movieReservation = new MovieReservation(movie, numberOfTickets, showTime);
 	 
 	  return movieReservation;
 	}

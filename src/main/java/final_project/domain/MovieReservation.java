@@ -11,18 +11,20 @@ public class MovieReservation {
 	@GeneratedValue
 	private long id;
 	
-    private String movieName;
+    private String movieName, showTime;
     private int numberOfTickets;
     
     public MovieReservation() {
     	movieName = null;
+    	showTime = null;
     	numberOfTickets = 0;
     }
     
-    public MovieReservation(Movie movieName, int numberOfTickets)
+    public MovieReservation(Movie movieName, int numberOfTickets, String showTime)
     {
         this.movieName = movieName.getMovieName();
         this.numberOfTickets = numberOfTickets;
+        this.showTime = showTime;
     }
 
     public String getMovieName() {
@@ -40,6 +42,22 @@ public class MovieReservation {
     public void setNumberOfTickets(int numberOfTickets) {
         this.numberOfTickets = numberOfTickets;
     }
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getShowTime() {
+		return showTime;
+	}
+
+	public void setShowTime(String showTime) {
+		this.showTime = showTime;
+	}
 
     
 }

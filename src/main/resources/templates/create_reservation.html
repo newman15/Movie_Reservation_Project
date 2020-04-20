@@ -10,7 +10,7 @@
 		padding: 40px;
 		text-align: center;
 		border-style: solid;
-	}
+	} 
 	
 	body{
 		background-color: #E6E6DC;
@@ -25,7 +25,7 @@
 	}
 	
 	#movieInfo {
-		padding-right: 20px;
+		padding-right: 30px;
 	}
 	
 	.flex-container {
@@ -43,15 +43,11 @@
 	<div id="movieChoice" class="flex-container">
 		<div id="movieInfo">
 			<img th:src="@{${movieChoice.imageUrl}}" />
-			<p th:inline="text">[[${movieChoice.movieName}]]</p>
-			<br />
-			<p th:inline="text">[[${movieChoice.releaseDate}]]</p>
-			<br />
 		</div>
 		
 		<div id="numOfTickets">
 			<h2><p th:inline="text">Choose Your Number of Tickets for [[${movieChoice.movieName}]]:</p></h2>
-				<form action="#" th:action="@{/movies/success}" th:object="${movieReservation}" method="get">
+				<form action="#" th:action="@{/movies/success}" method="get">
 					<input type="hidden" name="movieNumber"  th:value="${movieNumber}"   />
 					<input type="radio" value="1" name="ticketsRequested">
 					<label for="1">1 Ticket</label><br />
@@ -60,18 +56,21 @@
 					<input type="radio" value="3" name="ticketsRequested">
 					<label for="3">3 Tickets</label><br />
 					<input type="radio" value="4" name="ticketsRequested">
-					<label for="4">4 Tickets</label><br />
-					<br />
+					<label for="4">4 Tickets</label>
+					<br /><br />
+					
+					<label for="movieTimes">Choose a movie time:</label>
+					<select id="movieTimes" name="movieTimes">
+						<option value="12:00pm">12:00pm</option>
+						<option value="2:00pm">2:00pm</option>
+						<option value="4:00pm">4:00pm</option>
+						<option value="6:00pm">6:00pm</option>
+					</select>
+					<br/><br/>
 					<button type="submit" name="reserveId">Submit</button>
 				</form>
 		</div>
 	</div>
-
-
-	<div id="showTimes"></div>
-
-
-
 
 </body>
 </html>
