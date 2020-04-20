@@ -7,5 +7,5 @@ import org.springframework.data.repository.CrudRepository;
 public interface ReservationRepository extends CrudRepository<MovieReservation, Long>{
 	@Query(value = "SELECT * FROM movie_reservation ORDER BY number_of_tickets",
 			nativeQuery=true)
-	public List<MovieReservation> findMoviesOrderByTitle();
+	public List<MovieReservation> findMoviesOrderByTickets();
 }

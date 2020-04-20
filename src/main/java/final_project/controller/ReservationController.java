@@ -70,7 +70,7 @@ public class ReservationController {
 	@GetMapping("/movies/show-reservations")
 	public String showAllReservations(Model model) {
 	   
-	   Iterable<MovieReservation> reservationRepo = reservationRepository.findMoviesOrderByTitle();
+	   Iterable<MovieReservation> reservationRepo = reservationRepository.findMoviesOrderByTickets();
 	   model.addAttribute("reservations", reservationRepo);
 	   return "show_all_reservations";
 	}
