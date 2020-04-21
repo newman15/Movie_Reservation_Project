@@ -26,6 +26,13 @@ public class MovieReservation {
         this.numberOfTickets = numberOfTickets;
         this.showTime = showTime;
     }
+    
+    public MovieReservation(String movieName, int numberOfTickets, String showTime)
+    {
+       this.movieName = movieName;
+       this.numberOfTickets = numberOfTickets;
+       this.showTime = showTime;
+    }
 
     public String getMovieName() {
         return movieName;
