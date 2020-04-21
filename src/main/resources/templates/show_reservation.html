@@ -24,6 +24,23 @@
 		width: 300px;
 		justify-content: center;
 	}
+	
+	table{
+		width: 100%;
+		text-align: center;
+		padding-left: 25%;
+		padding-right: 25%;
+	}
+	
+	td, th{
+		border: 1px solid black;
+		padding: 8px;
+	}
+	
+	button{
+		font-size: 20px;
+	}
+	
 </style>
 </head>
 <body>
@@ -31,18 +48,36 @@
 		<h1>JAZZ Cinemas</h1>
 	</div>
 	
-	<h1>Your reservation has been saved</h1>
+	<h1>Your reservation has been saved</h1><br/>
 
 	<div id="ticketSuccess">
 		<img th:src="@{${ticketSuccess.imageUrl}}" />
-		<p th:inline="text">Your Reservation for [[${ticketSuccess.movieName}]] is completed</p>
-		<p th:inline="text">Your Number of tickets = [[${ticketsRequested}]]</p>
-		<p th:inline="text">Your showtime is reserved for [[${movieTimes}]]</p>
+		<br/><br/><br/>
+		
+		<p th:inline="text">Your Reservation Details For [[${ticketSuccess.movieName}]]</p>
+		<!-- <p th:inline="text">Your Number of tickets = [[${ticketsRequested}]]</p>
+		<p th:inline="text">Your showtime is reserved for [[${movieTimes}]]</p> -->
+		<table>
+			<tr>
+				<th>Reservation Number</th>
+				<th>Movie Title</th>
+				<th>Number of Tickets</th>
+				<th>Showtime</th>
+			</tr>
+			<tr th:each="searchReservation : ${searchReservation}">
+				<td th:text="${searchReservation.id}"></td>
+				<td th:text="${searchReservation.movieName}"></td>
+				<td th:text="${searchReservation.numberOfTickets}"></td>
+				<td th:text="${searchReservation.showTime}"></td>
+			</tr>
+		</table>
 	</div>
+	<br/><br/><br/>
 	
-	<form action="#" th:action="@{/movies/show-reservations}" method="get">
-		<button type="submit" name="showAllRes">Show All Reservations</button>
+	<form action="#" th:action="@{/movies}">
+		<button type="submit" name="returnToMovies">Return To Movies List</button>
 	</form>
+	<br/><br/><br/>
 				
 </body>
 </html>

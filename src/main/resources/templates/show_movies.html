@@ -17,6 +17,7 @@
 		padding: 12px;
 		justify-content: center;
 		border-style: ridge;
+		font-size: 20px;
 	}
 	
 	ul{
@@ -34,8 +35,22 @@
 		background-color: #E6E6DC;
 	}
 	
-	p, button{
+	button, .height-text{
 		font-size: 20px;
+	}
+
+	.flex-container {
+		display: flex;
+		flex-wrap: nowrap;
+		justify-content: center;
+	}	
+	
+	.flex-container > div{
+		padding: 30px;
+	}
+	
+	#searchReservation{
+		display: inline-block;
 	}
 	
 </style>
@@ -139,9 +154,21 @@
 		</li>
 	</ul>
 	
-	<ul>
-	<a href="/movies/show-reservations"><strong>Show All Reservations</strong></a>
-	</ul>
-
+	<div id="movieChoice" class="flex-container">
+		<div>
+			<form action="#" th:action="@{/movies/show-reservations}">
+				<button type="submit" name="showAllReservations">See All Reservations</button>
+			</form>
+		</div>
+		
+		<div id="searchReservaion">
+			<form action="#" th:action="@{/movies/search-reservation}">
+				<input class="height-text" type="text" placeholder="Reservation Number" id="resNum" name="resNum">
+				<button type="submit" name="searchReservation">Find</button>
+			</form>
+		</div>
+	</div>
+	<br/><br/><br/>
+	
 </body>
 </html>

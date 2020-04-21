@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html xmls:th="www.whymeleaf.org">
+<html>
 <head>
 <meta charset="ISO-8859-1">
-<title>All Reservations</title>
-</head>
+<title>Find Reservation</title>
 <style>
 	#title {
 		background-color: lightblue;
@@ -11,15 +10,14 @@
 		padding: 40px;
 		text-align: center;
 		border-style: solid;
+	} 
+	
+	h2{
+		text-align: center;
 	}
 	
 	body{
 		background-color: #E6E6DC;
-		/* background-color: lightblue; */
-	}
-	
-	p {
-		text-align: center;
 	}
 	
 	table{
@@ -34,35 +32,43 @@
 		padding: 8px;
 	}
 	
-	tr:nth-child(even){
-		background-color: #dddddd;
+	form{
+		text-align: center;
 	}
-
+	
+	button{
+		font-size: 20px;
+	}
+	
 </style>
+</head>
 <body>
 	<div id="title">
 		<h1>JAZZ Cinemas</h1>
 	</div>
 	
-	<p><a href="/movies"><strong>Go Back To Movie List</strong></a></p>
-	<br/><br/>
+	<h2>Your Reservation Details</h2>
 	
 	<table>
-		<caption>All Reservations</caption>
 		<tr>
 			<th>Reservation Number</th>
 			<th>Movie Title</th>
 			<th>Number of Tickets</th>
 			<th>Showtime</th>
 		</tr>
-		<tr th:each="movieReservation : ${reservations}">
-			<td th:text="${movieReservation.id}"></td>
-			<td th:text="${movieReservation.movieName}"></td>
-			<td th:text="${movieReservation.numberOfTickets}"></td>
-			<td th:text="${movieReservation.showTime}"></td>
+		<tr th:each="searchReservation : ${searchReservation}">
+			<td th:text="${searchReservation.id}"></td>
+			<td th:text="${searchReservation.movieName}"></td>
+			<td th:text="${searchReservation.numberOfTickets}"></td>
+			<td th:text="${searchReservation.showTime}"></td>
 		</tr>
 	</table>
 	<br/><br/><br/>
-
+	
+	<form action="#" th:action="@{/movies}">
+		<button type="submit" name="returnToMovies">Return To Movies List</button>
+	</form>
+	<br/><br/><br/>
+	
 </body>
 </html>
