@@ -44,18 +44,10 @@ public class ReservationServiceTest {
    
    @Test
    public void getReservationTest() {
-      //MovieReservation testMovieReservation = new MovieReservation();
       
       MovieReservation actual = reservationService.getMovieReservation(1);
       
-      assertThat( actual ).isEqualToComparingFieldByField(expected);
-      /*
-       * assertThat(
-       * actual.getMovieName()).isEqualTo(testMovieReservation.getMovieName());
-       * assertThat( actual.getNumberOfTickets()).isEqualTo(testMovieReservation.
-       * getNumberOfTickets()); assertThat(
-       * actual.getShowTime()).isEqualTo(testMovieReservation.getShowTime());
-       */
+      assertThat(actual).isEqualToComparingFieldByField(expected);
    }
    
    
