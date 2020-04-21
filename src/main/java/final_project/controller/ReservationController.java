@@ -32,7 +32,6 @@ public class ReservationController {
 	@GetMapping("/movies")
 	public String getMovieInfo(Model model) {
 
-	   //THIS CAN BE SIMPLIFIED IF TIME ALLOWS
 	   Movie movie1 = movieService.getMovieObjectInfo(0);
 	   Movie movie2 = movieService.getMovieObjectInfo(1);
 	   Movie movie3 = movieService.getMovieObjectInfo(2);
