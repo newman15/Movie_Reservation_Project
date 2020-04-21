@@ -32,6 +32,14 @@ public class MovieServiceTest {
             new Movie("Sonic the Hedgehog", 454626, "2020-02-12", "http://image.tmdb.org/t/p/original/aQvJ5WPzZgYVDrxLX4R6cLJCEaQ.jpg");
    
    //This assumes that the movie at index 1 in the json query is Sonic the Hedgehog.
+      
+      /* 
+       * test against null for name and release date
+       * check for http in image url
+       * and check response or for exceptions
+       */
+      
+   //given will return
    
    Movie actual = movieService.getMovieObjectInfo(1);
    
